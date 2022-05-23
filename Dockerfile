@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.8.0
 
 LABEL maintainer="Carmelina Charalambous (charalk@mskcc.org)" \
       version.image="1.0.0" \
@@ -14,11 +14,11 @@ RUN apt-get update \
             && cd /tmp && wget https://github.com/msk-access/athena/archive/refs/tags/${ATHENA_VERSION}.zip \
             && unzip ${ATHENA_VERSION}.zip \
             && cd /tmp/athena-${ATHENA_VERSION} \
-            && pip install --no-cache-dir -r requirements.txt \
+            && pip install -r requirements.txt \
       # copy to /usr/bin
-            && cp /tmp/athena/bin/annotate_bed.py /usr/bin/ \
-            && cp /tmp/athena/bin/coverage_stats_single.py /usr/bin/ \
-            && cp /tmp/athena/bin/bin/coverage_report_single.py /usr/bin/ \
-            && cp /tmp/athena/bin/load_data.py /usr/bin/ \
-            && cp /tmp/athena/data /usr/bin/ 
+            && cp /tmp/athena-${ATHENA_VERSION}/bin/annotate_bed.py /usr/bin/ \
+            && cp /tmp/athena-${ATHENA_VERSION}/bin/coverage_stats_single.py /usr/bin/ \
+            && cp /tmp/athena-${ATHENA_VERSION}/bin/coverage_report_single.py /usr/bin/ \
+            && cp /tmp/athena-${ATHENA_VERSION}/bin/load_data.py /usr/bin/ \
+            && cp -r /tmp/athena-${ATHENA_VERSION}/data /usr/bin/ 
 
