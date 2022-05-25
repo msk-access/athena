@@ -15,10 +15,14 @@ RUN apt-get update \
             && unzip ${ATHENA_VERSION}.zip \
             && cd /tmp/athena-${ATHENA_VERSION} \
             && pip install -r requirements.txt \
-      # copy to /usr/bin
-            && cp ; chmod +x /tmp/athena-${ATHENA_VERSION}/bin/annotate_bed.py /usr/bin/ \
+      # copy to /usr/bin and make scripts executable
+            && cp /tmp/athena-${ATHENA_VERSION}/bin/annotate_bed.py /usr/bin/ \
+            && chmod +x /usr/bin/annotate_bed.py \
             && cp /tmp/athena-${ATHENA_VERSION}/bin/coverage_stats_single.py /usr/bin/ \
+            && chmod +x /usr/bin/coverage_stats_single.py \
             && cp /tmp/athena-${ATHENA_VERSION}/bin/coverage_report_single.py /usr/bin/ \
+            && chmod +x /usr/bin/coverage_report_single.py \
             && cp /tmp/athena-${ATHENA_VERSION}/bin/load_data.py /usr/bin/ \
+            && chmod +x /usr/bin/load_data.py \
             && cp -r /tmp/athena-${ATHENA_VERSION}/data /usr/bin/ 
 CMD ["bash"]
