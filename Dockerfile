@@ -27,6 +27,6 @@ RUN apt-get update \
             && chmod +x /usr/bin/load_data.py \
             && cp /tmp/athena-${ATHENA_VERSION}/bin/version.py /usr/bin/ \
             && chmod +x /usr/bin/version.py \
-            && cp -r /tmp/athena-${ATHENA_VERSION}/data /usr/bin/
+            && cp -r /tmp/athena-${ATHENA_VERSION}/data /usr/bin/ \
             && cp -r /tmp/athena-${ATHENA_VERSION}/output /usr/bin/
 CMD ["bash"]
