@@ -10,6 +10,7 @@ ENV ATHENA_VERSION 1.4.1
 RUN apt-get update \
       # for wget
             && apt-get install -y ca-certificates \
+            && apt-get install bedtools \
       # download, unzip, install
             && cd /tmp && wget https://github.com/msk-access/athena/archive/refs/tags/${ATHENA_VERSION}.zip \
             && unzip ${ATHENA_VERSION}.zip \
