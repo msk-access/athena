@@ -1,5 +1,7 @@
+################## Base Image ##########
 FROM python:3.8.0
 
+################## ARGUMENTS/Environments ##########
 LABEL maintainer="Carmelina Charalambous (charalk@mskcc.org)" \
       version.image="1.0.0" \
       version.athena="1.4.1" \
@@ -10,7 +12,7 @@ ENV ATHENA_VERSION 1.4.1
 RUN apt-get update \
       # for wget
             && apt-get install -y ca-certificates \
-            && apt-get install bedtools \
+            && apt-get install bedtools:2.27.1 \
       # download, unzip, install
             && cd /tmp && wget https://github.com/msk-access/athena/archive/refs/tags/${ATHENA_VERSION}.zip \
             && unzip ${ATHENA_VERSION}.zip \
@@ -27,7 +29,5 @@ RUN apt-get update \
             && chmod +x /usr/bin/load_data.py \
             && cp /tmp/athena-${ATHENA_VERSION}/bin/version.py /usr/bin/ \
             && chmod +x /usr/bin/version.py \
-      # folder output required 
-            && cp -r /tmp/athena-${ATHENA_VERSION}/data /usr/bin/ \
-            && cp -r /tmp/athena-${ATHENA_VERSION}/output /usr/
+            && cp -r /tmp/athena-${ATHENA_VERSION}/data /usr/bin/ 
 CMD ["bash"]
