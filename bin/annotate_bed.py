@@ -212,7 +212,7 @@ def main():
 
     # set dir for writing to
     bin_dir = os.path.dirname(os.path.abspath(__file__))
-    out_dir = os.path.join(bin_dir, "../output/")
+    out_dir = os.getcwd()
     outfile_name = f"{args.output_name}_annotated.bed"
     outfile = os.path.join(out_dir, outfile_name)
 
