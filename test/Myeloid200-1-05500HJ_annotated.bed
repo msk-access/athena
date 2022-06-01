@@ -1,0 +1,5 @@
+reading panel bed file
+reading transcript information file
+reading coverage file, this might take a while...
+calling bedtools to add transcript info
+calling bedtools to add coverage info
