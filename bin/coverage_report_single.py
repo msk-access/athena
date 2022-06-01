@@ -1248,7 +1248,7 @@ class generateReport():
 
         # write report
         bin_dir = os.path.dirname(os.path.abspath(__file__))
-        out_dir = os.path.join(bin_dir, "../output/")
+        out_dir = os.getcwd()
         outfile = os.path.join(out_dir, output_name)
 
         file = open(outfile, 'w')
